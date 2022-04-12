@@ -6,6 +6,7 @@ export const LayoutContainer = styled.div`
   grid-template-columns: 370px 1fr;
   grid-template-rows: auto 1fr; */
   display: flex;
+  position: relative;
 `;
 
 export const SidePanelContainer = styled.aside`
@@ -18,6 +19,7 @@ export const SidePanelContainer = styled.aside`
   justify-content: flex-start;
   flex: 0 0 37rem;
   min-height: 100vh;
+  /* position: fixed; */
 `;
 
 export const ContentContainer = styled.div`
