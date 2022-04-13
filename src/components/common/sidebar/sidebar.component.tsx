@@ -1,4 +1,6 @@
 import { Pane, Image } from 'evergreen-ui';
+import { useState } from 'react';
+import { AddCategory } from '../../add-category/add-category.component';
 import {
   LogoContainer,
   CollectionsContainer,
@@ -8,9 +10,11 @@ import {
 } from './sidebar.container.styles';
 
 export const SideBar = () => {
+  const [isShown, setIsShown] = useState(false);
   return (
     <>
-      <LogoContainer>Tweet</LogoContainer>
+      <AddCategory isShown={isShown} setIsShown={setIsShown} />
+      <LogoContainer>Bookmark Manager</LogoContainer>
 
       <CollectionsContainer>
         <CollectionLists>
@@ -43,7 +47,7 @@ export const SideBar = () => {
       </CollectionsContainer>
 
       <AddNewContainer>
-        <Pane display={'flex'} gap={'2.4rem'} alignItems={'center'}>
+        <Pane display={'flex'} gap={'2.4rem'} alignItems={'center'} onClick={() => setIsShown(true)}>
           <Image src='add.svg' />
           Add New Collection
         </Pane>
