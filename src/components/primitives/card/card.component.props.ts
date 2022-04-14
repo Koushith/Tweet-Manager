@@ -4,4 +4,5 @@
 export interface CardComponentProps {
   heading: string;
   description: string;
+  onClick?: () => void;
 }

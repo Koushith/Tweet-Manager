@@ -8,12 +8,11 @@ export const Card: React.FC<CardComponentProps> = (props) => {
   return (
     <Pane display={'flex'} gap={'2rem'}>
       <Image src='rectangle.svg' />
-      <Pane display={'flex'} flexDirection={'column'} justifyContent={'space-around'}>
+      <Pane display={'flex'} flexDirection={'column'} justifyContent={'space-around'} flex={2}>
         <StyledHeading>{heading} </StyledHeading>
         <StyledParagraph>{description}</StyledParagraph>
       </Pane>
       <Pane display={'flex'} gap={'2rem'} alignItems={'center'}>
-        <TrashIcon size={20} color='muted' />
         <ArchiveIcon size={20} color='muted' />
       </Pane>
     </Pane>
