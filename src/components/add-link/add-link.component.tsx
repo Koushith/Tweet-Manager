@@ -1,6 +1,17 @@
 // @ts-nocheck
 
-import { Button, Card, FileCard, FileUploader, Pane, SideSheet, TextInput, TextInputField } from 'evergreen-ui';
+import {
+  Button,
+  Card,
+  FileCard,
+  FileUploader,
+  Label,
+  Pane,
+  SideSheet,
+  Textarea,
+  TextInput,
+  TextInputField,
+} from 'evergreen-ui';
 import { useCallback, useState } from 'react';
 import styled from 'styled-components';
 import { useAllBookmark } from '../../context/all-bookmark.context';
@@ -25,15 +36,19 @@ export const AddLink = (props: any) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState('');
+  const [emoji, setEmoji] = useState('');
 
   const handelSubmit = () => {
     // setNewLink([...allLinks, { link, title, description, category, id: uuid() }]);
 
-    setNewLink(newLink.concat({ link, title, description, category, id: uuid() }));
+    setNewLink(
+      newLink.concat({ link, title, description, category: { image: emoji, categoryName: category }, id: uuid() })
+    );
     setLink('');
     setTitle('');
     setDescription('');
     setCategory('');
+    setEmoji('');
   };
 
   return (
@@ -66,17 +81,6 @@ export const AddLink = (props: any) => {
             </Pane>
             <Pane marginBottom={20}>
               <TextInputField
-                label='Description'
-                placeholder='loremipsm'
-                inputHeight={50}
-                fontSize={18}
-                value={description}
-                onChange={(e: any) => setDescription(e.target.value)}
-              />
-            </Pane>
-
-            <Pane marginBottom={20}>
-              <TextInputField
                 label='Add Category'
                 placeholder='Select Category'
                 inputHeight={50}
@@ -85,8 +89,30 @@ export const AddLink = (props: any) => {
                 onChange={(e: any) => setCategory(e.target.value)}
               />
             </Pane>
+            <Pane marginBottom={20}>
+              <TextInputField
+                label='Select Emoji'
+                placeholder='Select Emoji'
+                value={emoji}
+                onChange={(e: any) => setEmoji(e.target.value)}
+                inputHeight={50}
+                fontSize={18}
+              />
+            </Pane>
+            <Pane marginBottom={20}>
+              <Label htmlFor='textarea-2' marginBottom={6} display='block'>
+                Description
+              </Label>
+              <Textarea
+                placeholder='loremipsm'
+                inputHeight={50}
+                fontSize={18}
+                value={description}
+                onChange={(e: any) => setDescription(e.target.value)}
+              />
+            </Pane>
 
-            <FileUploader
+            {/* <FileUploader
               label='Upload Link Image (Optional)'
               description='Max File size is 10 MB.'
               maxSizeInBytes={50 * 1024 ** 2}
@@ -110,7 +136,7 @@ export const AddLink = (props: any) => {
                 );
               }}
               values={files}
-            />
+            /> */}
             <StyledButton marginRight={16} appearance='primary' size={'large'} width={'100%'} onClick={handelSubmit}>
               Add
             </StyledButton>

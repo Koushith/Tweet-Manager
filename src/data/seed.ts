@@ -9,7 +9,7 @@ export const allLinks = [
     link: 'https://google.in',
     image: 'image',
     tags: ['design', 'code'],
-    category: 'Web3',
+    category: { image: '🎨', categoryName: 'Design System' },
   },
   {
     id: uuid(),
@@ -19,6 +19,6 @@ export const allLinks = [
     link: 'https://google.in',
     image: 'image',
     tags: ['design', 'code'],
-    category: 'React',
+    category: { image: '⚛️', categoryName: 'React' },
   },
 ];

@@ -6,9 +6,7 @@ import { useAllBookmark } from '../../context/all-bookmark.context';
 export const Home = () => {
   const [addCategorySider, setAddCategorySider] = useState(false);
   // @ts-ignore
-  const { allLinks, newLink } = useAllBookmark();
-
-  console.log('data', allLinks);
+  const { newLink } = useAllBookmark();
 
   return (
     <Pane display={'flex'} flexDirection={'column'} gap={'2rem'} justifyContent={'center'}>

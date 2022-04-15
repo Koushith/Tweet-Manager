@@ -1,5 +1,7 @@
+// @ts-nocheck
 import { Pane, Image } from 'evergreen-ui';
 import { useState } from 'react';
+import { useCategory } from '../../../context/category-context';
 import { AddCategory } from '../../add-category/add-category.component';
 import {
   LogoContainer,
@@ -11,6 +13,8 @@ import {
 
 export const SideBar = () => {
   const [isShown, setIsShown] = useState(false);
+  const { category } = useCategory();
+  console.log('cat listttt', category);
   return (
     <>
       <AddCategory isShown={isShown} setIsShown={setIsShown} />
@@ -19,7 +23,7 @@ export const SideBar = () => {
       <CollectionsContainer>
         <CollectionLists>
           <CategoryHeading>MY COLLECTIONS</CategoryHeading>
-          <Pane display={'flex'} gap={'2.4rem'} alignItems={'center'}>
+          {/* <Pane display={'flex'} gap={'2.4rem'} alignItems={'center'}>
             <Image src='placeholder.svg' />
             Web3
           </Pane>
@@ -42,7 +46,14 @@ export const SideBar = () => {
           <Pane display={'flex'} gap={'2.4rem'} alignItems={'center'}>
             <Image src='placeholder.svg' />
             UI/UX
-          </Pane>
+          </Pane> */}
+          {category &&
+            category.map((cat, index) => (
+              <Pane display={'flex'} gap={'1rem'} alignItems={'center'} key={index}>
+                <Pane> {cat.image} </Pane>
+                {cat.categoryName}
+              </Pane>
+            ))}
         </CollectionLists>
       </CollectionsContainer>
 
